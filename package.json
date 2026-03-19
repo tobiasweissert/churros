@@ -1,0 +1,25 @@
+{
+  "name": "churros",
+  "version": "0.1.0",
+  "description": "Open-source Donut clone for Slack — random intros, watercooler, celebrations, and more",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "test": "vitest run",
+    "lint": "eslint src/**/*.ts",
+    "docker:rebuild": "docker build -t churros . && docker stop churros && docker rm churros && docker run -d --name churros --env-file .env -v \"$(pwd)/churros.json:/data/churros.json\" churros"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.21.1",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/node-cron": "^3.0.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "vitest": "^4.1.0"
+  }
+}
